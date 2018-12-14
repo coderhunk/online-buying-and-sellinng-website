@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+    background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.registerbtn:hover {
+    opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+    color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+    background-color: #f1f1f1;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<form action="register_form.php" method="post">
+  <div class="container">
+    <h1>Register</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <label for="name"><b><label class="labelTop">
+						Name
+						<span class="require">*</span>
+						</label></b></label>
+    <input type="text" placeholder="Enter your name For ex: Anshuman Singh" name="name" required pattern="[A-Za-z ]{1,}" title="your name should only contain letters">
+
+    <input type="radio" name="gender" value="male" checked> Male
+    <input type="radio" name="gender" value="female"> Female
+    <input type="radio" name="gender" value="other"> Other
+
+    <label for="branch"><b><label class="labelTop">
+						branch
+						<span class="require">*</span>
+						</label> </b></label>
+    <input type="text" placeholder="Enter your branch For ex:CSE" name="branch" required>
+    
+    <label for="dorm"><b><label class="labelTop">
+						dorm
+						<span class="require">*</span>
+						</label></b></label>
+    <input type="text" placeholder="Enter your DORM For ex: g-block" name="dorm" required>
+    
+    <label for="year"><b><label class="labelTop">
+						year
+						<span class="require">*</span>
+						</label></b></label>
+    <input type="text" placeholder="Enter your year For ex: 3rd year" name="year" required>
+
+    <label for="mobile"><b><label class="labelTop">
+						Mobile no:
+						<span class="require">*</span>
+						</label></b></label>
+    <input type="text" placeholder="Ex:9893089769" name="mobile" required pattern="[0-9]{10}" title="Exactly 10 numbers only">
+
+    <label for="email"><b><label class="labelTop">
+						email
+						<span class="require">*</span>
+						</label></b></label>
+    <input type="text" placeholder="for ex:anshumansingh.2016@vitstudent.ac.in" name="email" required pattern="[a-z0-9._%+-]+@vitstudent.ac.in" title="USE VIT email only">
+
+    <label for="reg-no"><b><label class="labelTop">
+						REG NO
+						<span class="require">*</span>
+						</label></b></label>
+    <input type="text" placeholder="Enter your reg-no For Ex:16BCE0988" name="reg-no" required pattern="[0-9]{1}[0-9]{1}[A-Za-z]{1}[A-Za-z]{1}[A-Za-z]{1}[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}">
+
+    <label for="psw"><b><label class="labelTop">
+						password
+						<span class="require">* min length:8</span>
+						</label></b></label>
+    <input type="password" placeholder="Enter Password" name="password" id="txtPassword" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+    <label for="cnfr-psw"><b><label class="labelTop">
+						confirm password
+						<span class="require">*</span>
+						</label></b></label>
+    <input type="password" placeholder="Re Enter Password" name="confirm_password" id="confirm_txtPassword" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+    <hr>
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+  
+  <div class="container signin">
+    <p>Already have an account? <i class="lock"></i>
+                            <a onclick="vpb_show_login_box()" style="cursor:pointer;">Login</a>|.</p>
+  </div>
+</form>
+<script>
+      var password = document.getElementById("txtPassword")
+  , confirm_password = document.getElementById("confirm_txtPassword");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
+
+</body>
+</html>
